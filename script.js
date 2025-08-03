@@ -51,7 +51,7 @@ function startAnalysis() {
   isAnalyzing = true;
   currentStep = 0;
   
-  // Update UI
+ 
   analyzeBtn.classList.add('processing');
   analyzeBtn.textContent = 'PROCESSING...';
   consoleStatus.textContent = 'ANALYZING';
@@ -115,9 +115,8 @@ function showFinalResult(predictedDate) {
   }, 1000);
 }
 
-// Add some ambient effects
 document.addEventListener('DOMContentLoaded', function() {
-  // Add random flicker effect to header
+  // random flicker effect 
   setInterval(() => {
     const header = document.querySelector('.header h1');
     if (Math.random() < 0.05) {
