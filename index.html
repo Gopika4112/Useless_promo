@@ -1,21 +1,4 @@
-can u explain how u did the write on effect here?
 
-Looking at the code, the typewriter effect is implemented through the typeMessage function. Here's how it works:
-
-The typewriter effect is created through a clever recursive function that adds one character at a time with controlled delays. The key insight is using setTimeout() to create the timing between characters, while maintaining a visual cursor that shows where the "typing" is happening.
-
-The effect feels natural because it:
-
-    Preserves existing text (appends rather than replaces)
-    Shows a blinking cursor during typing
-    Allows chaining multiple messages through callbacks
-    Uses realistic timing that mimics human typing speed
-
-This creates that classic "terminal" or "AI thinking" effect you see in sci-fi interfaces!
-
-divide this to html, css and js- diff files
-
-I'll help you separate this into three different files. Here are the HTML, CSS, and JavaScript files:
 
 
 <!DOCTYPE html>
