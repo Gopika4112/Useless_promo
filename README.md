@@ -2,4 +2,4 @@
 Useless projects promotion project
 
 ## Deployed website
-[https://chronoconsole.vercel.app/]
+https://chronoconsole.vercel.app/
