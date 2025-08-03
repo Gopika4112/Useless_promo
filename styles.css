@@ -1,0 +1,326 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/*bg grid */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridMove 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  border-bottom: 2px solid #00ff00;
+  margin-bottom: 30px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.header h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  text-shadow: 0 0 20px #00ff00;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+}
+
+.header .subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.header .version {
+  font-size: 0.8rem;
+  color: #00aa00;
+  border: 1px solid #00aa00;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Status indicators */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.status-item {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00ff00;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+}
+
+.status-online {
+  color: #00ff00;
+}
+
+/* Input */
+.input-section {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00ff00;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+}
+
+.input-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #00ff00;
+}
+
+input[type="date"] {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-family: 'Courier New', monospace;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  transition: all 0.3s ease;
+}
+
+input[type="date"]:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+  border-color: #00ffff;
+}
+
+.analyze-btn {
+  background: linear-gradient(45deg, #001100, #003300);
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.analyze-btn:hover {
+  background: linear-gradient(45deg, #003300, #005500);
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.analyze-btn:active {
+  transform: translateY(0);
+}
+
+.analyze-btn.processing {
+  animation: pulse 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(0, 255, 0, 0.8); }
+}
+
+/* Console */
+.console-section {
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #00ff00;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.3);
+}
+
+.console-header {
+  background: rgba(0, 255, 0, 0.1);
+  padding: 15px 25px;
+  border-bottom: 1px solid #00ff00;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.console-title {
+  font-size: 1.1rem;
+}
+
+.console-status {
+  font-size: 0.9rem;
+  color: #00aa00;
+}
+
+#console {
+  padding: 25px;
+  min-height: 300px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #00ff00;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 255, 0, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff00, #00ffff);
+  width: 0%;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+/* result */
+.prediction-result {
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 255, 0.1));
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00ffff;
+  animation: resultGlow 2s ease-in-out;
+}
+
+@keyframes resultGlow {
+  0% { box-shadow: 0 0 0 rgba(0, 255, 255, 0.5); }
+  50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.8); }
+  100% { box-shadow: 0 0 0 rgba(0, 255, 255, 0.5); }
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+  border-top: 1px solid #00aa00;
+  color: #00aa00;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 15px;
+  }
+  
+  .status-bar {
+    flex-direction: column;
+  }
+  
+  .status-item {
+    min-width: auto;
+  }
+  
+  .input-section {
+    padding: 20px;
+    margin: 0 10px 30px 10px;
+  }
+  
+  .console-section {
+    margin: 0 10px;
+  }
+  
+  #console {
+    padding: 20px;
+    min-height: 250px;
+  }
+  
+  .analyze-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+/* Loading animation */
+.loading-dots::after {
+  content: '';
+  animation: dots 2s infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
